@@ -1,0 +1,54 @@
+<div ng-controller="RouteAddCtrl" class="container">
+  <form name="routeAddForm" class="form-inline" novalidate>
+    <label for="rName">Route name: </label>
+    <input type="text" ng-model="route.name" name="rName" required="" class="form-control"/>
+    <br />
+    <div ng-show="form.$submitted || form.rName.$touched">
+      <div ng-show="form.rName.$error.required">The route name is required.</div>
+    </div>
+    <br>
+    <label for="themeSelect"> Theme: </label>
+    <select name="themeSelect" ng-model="route.theme" class="form-control" >
+      <option value="Social Inclusion">Social Inclusion</option>
+      <option value="Nature">Nature</option>
+      <option value="City">City</option>
+      <option value="Other">Other</option>
+    </select>
+    <br>
+
+    <br><b>Tasks:</b>
+
+    <div class="route_tasks">
+      <ul ng-sortable class="task_list">
+	<li class="task_list_item" ng-repeat="task in route.tasks">
+	  <div class="row">
+            <div class="col-md-1">{{$index + 1}}.</div>
+            <div class="col-md-3">
+              <label for="taskType"> Task type: </label>
+              <select name="taskType" class="form-control" ng-model="task.type">
+                <option value="move">Move</option>
+                <option value="photo">Take photo</option>
+                <option value="word">Write word</option>
+              </select>
+            </div>
+            <div class="col-md-8">
+              <label for="instructions">Instructions: </label><p>
+              <textarea name="instructions" class="form-control" rows="3" placeholder="Instructions shown to the user" ng-model="task.instructions"></textarea>
+            </div>
+          </div>
+	</li>
+      </ul>
+
+      <br><b>Add task:</b>
+
+      <div class="btn-group" role="group" aria-label="Add task">
+	<button type="button" class="btn btn-default" ng-click="addTask('move')">Move</button>
+	<button type="button" class="btn btn-default" ng-click="addTask('photo')">Take photo</button>
+	<button type="button" class="btn btn-default" ng-click="addTask('word')">Write word</button>
+      </div>
+      <br>
+    </div>
+    <input type="submit" ng-click="createRoute()" value="Save" class="btn btn-primary"/>
+  </form>
+</div>
+

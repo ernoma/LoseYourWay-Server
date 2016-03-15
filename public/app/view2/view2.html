@@ -1,0 +1,24 @@
+<div class="container" ng-controller="RouteListCtrl">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      Search: <input ng-model="query">
+      Sort by:
+      <select ng-model="orderProp">
+        <option value="name">Name</option>
+        <option value="theme">Theme</option>
+	<option value="-created">Newest</option>
+      </select>
+    </div>
+    <div class="col-md-10">
+      <ul>
+	<li ng-repeat="route in routes  | filter:query | orderBy:orderProp">
+	  <h2><a href="#/routes/{{route._id}}">{{route.name}}</a></h2>
+	  <p>Theme: {{route.theme}}</p>
+	  <p>Created at: {{route.created}}</p>
+	</li>
+      </ul>
+    </div>
+  </div>
+</div>
