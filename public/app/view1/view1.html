@@ -1,19 +1,23 @@
 <div ng-controller="RouteAddCtrl" class="container">
   <form name="routeAddForm" class="form-inline" novalidate>
     <label for="rName">Route name: </label>
-    <input type="text" ng-model="route.name" name="rName" required="" class="form-control"/>
+    <input type="text" ng-model="route.name" name="rName" class="form-control"/>
     <br />
     <div ng-show="form.$submitted || form.rName.$touched">
       <div ng-show="form.rName.$error.required">The route name is required.</div>
     </div>
     <br>
     <label for="themeSelect"> Theme: </label>
-    <select name="themeSelect" ng-model="route.theme" class="form-control" >
+    <select name="themeSelect" ng-model="route.theme" class="form-control" ng-change="changedTheme(route.theme)">
       <option value="Social Inclusion">Social Inclusion</option>
       <option value="Nature">Nature</option>
       <option value="City">City</option>
-      <option value="Other">Other</option>
+      <option value="Other">Other...</option>
     </select>
+    
+    <span ng-style="{color: myColor}" ng-model="myColor" id="label_other_theme">Other theme: </span>
+    <input type="text" ng-model="otherThemeName" name="otherThemeName" placeholder="Name" class="form-control" ng-disabled="route.theme != 'Other'" ng-change="changedThemeName(otherThemeName)"/>
+
     <br>
 
     <br><b>Tasks:</b>

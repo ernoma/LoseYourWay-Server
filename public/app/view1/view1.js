@@ -13,6 +13,8 @@ angular.module('myApp.view1', ['ngRoute'])
 
     $scope.routes = Routes.query();
 
+    $scope.otherThemeName = "";
+
     var resetRoute = function() {
 	$scope.route = {
             name: "",
@@ -28,6 +30,21 @@ angular.module('myApp.view1', ['ngRoute'])
 
     resetRoute();
 
+    $scope.myColor = "#aaa";
+
+    $scope.changedTheme = function(theme) {
+	if (theme == "Other") {
+	    $scope.myColor = "#000";
+	}
+	else {
+	    $scope.myColor = "#aaa";
+	}
+    }	    
+
+    //$scope.changedThemeName = function(otherThemeName) {
+	//$scope.route.theme = otherThemeName;
+    //}
+
     $scope.addTask = function(type) {
 	$scope.route.tasks.push({
 	    type: type,
@@ -38,6 +55,10 @@ angular.module('myApp.view1', ['ngRoute'])
 
     $scope.createRoute = function() {
 	console.log($scope.route);
+
+	if ($scope.route.theme == "Other" && $scope.otherThemeName != "") {
+	    $scope.route.theme = $scope.otherThemeName;
+	}
 
 	if ($scope.route.name != "") {
 

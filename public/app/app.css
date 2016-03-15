@@ -1,5 +1,10 @@
 /* app css stylesheet */
 
+#label_other_theme {
+    padding-left: 10px;
+    font-style: normal;
+}
+
 .route_tasks {
     border-style: solid;
     border-width: 1px;
