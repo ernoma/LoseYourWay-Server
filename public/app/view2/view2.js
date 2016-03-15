@@ -11,7 +11,9 @@ angular.module('myApp.view2', ['ngRoute'])
 
 .controller('RouteListCtrl', function($scope, Routes) {
 
-    $scope.routes = Routes.query();
+    $scope.routes = Routes.query(function() {
+	//console.log($scope.routes);
+    });
 
     $scope.orderProp = "name";
 

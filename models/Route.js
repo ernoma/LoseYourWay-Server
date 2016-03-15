@@ -2,7 +2,8 @@ var mongoose = require('mongoose');
 
 var TaskSchema = new mongoose.Schema({
     type: String,
-    instructions: String
+    instructions: String,
+    routeStep: Number
 });
 
 var RouteSchema = new mongoose.Schema({

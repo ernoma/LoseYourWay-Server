@@ -19,7 +19,8 @@ angular.module('myApp.view1', ['ngRoute'])
             theme: "City",
             tasks: [
 		{ type: "move",
-		  instructions: ""
+		  instructions: "",
+		  routeStep: 1
 		}
             ]
 	}
@@ -30,7 +31,8 @@ angular.module('myApp.view1', ['ngRoute'])
     $scope.addTask = function(type) {
 	$scope.route.tasks.push({
 	    type: type,
-	    instructions: ""
+	    instructions: "",
+	    routeStep: $scope.route.tasks.length + 1
         });
     }
 
@@ -38,6 +40,11 @@ angular.module('myApp.view1', ['ngRoute'])
 	console.log($scope.route);
 
 	if ($scope.route.name != "") {
+
+	    for (var i = 0; i < $scope.route.tasks.length; i++) {
+		$scope.route.tasks[i].routeStep = i + 1;
+	    }
+
 	    var route = new Routes($scope.route);
 	    route.$save(function(){
 		$scope.routes.push(route);
@@ -45,6 +52,4 @@ angular.module('myApp.view1', ['ngRoute'])
 	    });
 	}
     }
-
-
 });
