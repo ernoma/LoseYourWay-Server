@@ -1,0 +1,15 @@
+<div class="container" ng-controller="RouteDetailCtrl">
+  <h1>Name: {{route.name}}</h1>
+  
+  <h4>Theme: {{route.theme}}</h4>
+
+  <h4>Creation date: {{route.created}}</h4>
+
+  <h4>Tasks:</h4>
+  <ul class="list-group">
+    <li ng-repeat="task in route.tasks" class="list-group-item">
+      <p>Type: {{task.type}}</p>
+      <p>Instructions: {{task.instructions}}
+    </li>
+  </ul>
+</div>

@@ -1,20 +1,27 @@
 <div class="container" ng-controller="RouteListCtrl">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-4">
       <!--Sidebar content-->
-
-      Search: <input ng-model="query">
-      Sort by:
-      <select ng-model="orderProp">
-        <option value="name">Name</option>
-        <option value="theme">Theme</option>
-	<option value="-created">Newest</option>
-      </select>
+      <div class="jumbotron">
+	<form>
+	  <div class="form-group">
+	    Search: <input type="text" ng-model="query">
+	  </div>
+	  <div class="form-group">
+	    Sort by:
+	    <select ng-model="orderProp">
+              <option value="name">Name</option>
+              <option value="theme">Theme</option>
+	      <option value="-created">Newest</option>
+	    </select>
+	  </div>
+	</form>
+      </div>
     </div>
-    <div class="col-md-10">
-      <ul>
-	<li ng-repeat="route in routes  | filter:query | orderBy:orderProp">
-	  <h2><a href="#/routes/{{route._id}}">{{route.name}}</a></h2>
+    <div class="col-md-8">
+      <ul class="list-group">
+	<li class="list-group-item" ng-repeat="route in routes  | filter:query | orderBy:orderProp">
+	  <h2><a href="#/app/routes/{{route._id}}">{{route.name}}</a></h2>
 	  <p>Theme: {{route.theme}}</p>
 	  <p>Created at: {{route.created}}</p>
 	</li>
