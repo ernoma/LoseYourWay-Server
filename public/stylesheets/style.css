@@ -6,3 +6,12 @@ body {
 a {
   color: #00B7FF;
 }
+
+.sample_postcard {
+    border: solid;
+    border-radius: 5px;
+}
+
+.sample_postcard_text {
+    padding-top: 40px;
+}
