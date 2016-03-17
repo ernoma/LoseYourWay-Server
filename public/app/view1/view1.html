@@ -1,10 +1,19 @@
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>
 <div ng-controller="RouteAddCtrl" class="container">
-  <form name="routeAddForm" class="form-inline" novalidate>
+  <form name="routeAddForm" class="form-inline css-form" novalidate>
     <label for="rName">Route name: </label>
-    <input type="text" ng-model="route.name" name="rName" class="form-control"/>
+    <input type="text" ng-model="route.name" name="rName" class="form-control" required />
     <br />
-    <div ng-show="form.$submitted || form.rName.$touched">
-      <div ng-show="form.rName.$error.required">The route name is required.</div>
+    <div ng-show="routeAddForm.$submitted || routeAddForm.rName.$touched">
+      <div ng-show="routeAddForm.rName.$error.required">The route name is required.</div>
     </div>
     <br>
     <label for="themeSelect"> Theme: </label>

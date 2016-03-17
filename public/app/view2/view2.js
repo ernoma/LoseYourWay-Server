@@ -25,5 +25,4 @@ angular.module('myApp.view2', ['ngRoute'])
 .controller('RouteDetailCtrl', function($scope, $routeParams, Routes) {
 
     $scope.route = Routes.get({id: $routeParams.routeID });
-
 });

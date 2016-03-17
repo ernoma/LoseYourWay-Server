@@ -23,7 +23,7 @@
 	<li class="list-group-item" ng-repeat="route in routes  | filter:query | orderBy:orderProp">
 	  <h2><a href="#/app/routes/{{route._id}}">{{route.name}}</a></h2>
 	  <p>Theme: {{route.theme}}</p>
-	  <p>Created at: {{route.created}}</p>
+	  <p>Created at: {{route.created | date : 'medium'}}</p>
 	</li>
       </ul>
     </div>
