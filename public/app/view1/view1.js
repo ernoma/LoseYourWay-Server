@@ -18,7 +18,7 @@ angular.module('myApp.view1', ['ngRoute'])
     var resetRoute = function() {
 	$scope.route = {
             name: "",
-            theme: "City",
+            theme: "Architecture and urban design",
             tasks: [
 		{ type: "move",
 		  instructions: "",
