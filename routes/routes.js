@@ -15,9 +15,11 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     //console.log(req);
     //console.log(req.body);
+
     Route.create(req.body, function (err, post) {
-	console.log(err);
+	//console.log(err);
 	if (err) return next(err);
+	//console.log(post);
 	res.json(post);
     });
 });

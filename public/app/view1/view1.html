@@ -39,15 +39,16 @@
 	<li class="task_list_item" ng-repeat="task in route.tasks">
 	  <div class="row">
             <div class="col-md-1">{{$index + 1}}.</div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <label for="taskType"> Task type: </label>
               <select name="taskType" class="form-control" ng-model="task.type">
                 <option value="move">Move</option>
                 <option value="photo">Take photo</option>
                 <option value="word">Write word</option>
+		<option value="photoword">Take photo and write word</option>
               </select>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7">
               <label for="instructions">Instructions: </label><p>
               <textarea name="instructions" class="form-control" rows="3" placeholder="Instructions shown to the user" ng-model="task.instructions"></textarea>
             </div>
@@ -61,6 +62,7 @@
 	<button type="button" class="btn btn-default" ng-click="addTask('move')">Move</button>
 	<button type="button" class="btn btn-default" ng-click="addTask('photo')">Take photo</button>
 	<button type="button" class="btn btn-default" ng-click="addTask('word')">Write word</button>
+	<button type="button" class="btn btn-default" ng-click="addTask('photoword')">Take photo and write word</button>
       </div>
       <br>
     </div>
