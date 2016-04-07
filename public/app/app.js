@@ -6,6 +6,8 @@ angular.module('myApp', [
   'ng-sortable',
   'myApp.view1',
   'myApp.view2',
+  'myApp.experiences',
+  'myApp.privacy',
   'myApp.version',
   'loseYourWayServer.services'
 ]).

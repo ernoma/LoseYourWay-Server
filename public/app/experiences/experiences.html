@@ -1,0 +1,30 @@
+<style type="text/css">
+  .css-form input.ng-invalid.ng-touched {
+    background-color: #FA787E;
+  }
+
+  .css-form input.ng-valid.ng-touched {
+    background-color: #78FA89;
+  }
+</style>
+<div ng-controller="ExperiencesCtrl" class="container">
+
+  <h1>Amsterdam Experiences</h1>
+
+  <h2>Routes on Map</h2>
+
+  <leaflet lf-center="mediapolis" width="100%" height="480px"></leaflet>
+
+  <h2>User Feedbacks</h2>
+
+  <div class="row" ng-repeat="routeResult in routeResults">
+    <div class="col-md-12">
+      <h3>{{routeResult.routeName}}</h3>
+    </div>
+  </div>
+
+  <h2>Route Words</h2>
+
+  
+
+</div>
