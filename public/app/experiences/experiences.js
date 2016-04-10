@@ -1,5 +1,12 @@
 'use strict';
 
+//
+// TODO: allow filtering of the results based on date that allows for example showing the
+// Mediapolis test results (quickly) if Amsterdam results are not available
+// Also try out the imagine route really yourself before Wednesday
+// TODO: Photo storing and showing
+//
+
 angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -11,9 +18,19 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 
 .controller('ExperiencesCtrl', function($scope, Routes, RouteResults, leafletData) {
 
+    leafletData.getMap().then(function(map) {
+	map.openPopup = function(popup) {
+            //        this.closePopup();  // just comment this
+            map._popup = popup;
+
+            return map.addLayer(popup).fire('popupopen', {
+                popup: map._popup
+            });
+        }
+    });
+
     var routeColors = [ "#FF0000",
 			"#0000FF",
-			"#FFFF00",
 			"#FF00FF",
 			"#00FFFF",
 			"#F0F0F0",
@@ -27,56 +44,39 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 			];
 
     var routeLines = [];
+    var markers = [];
 
     $scope.routeResults = [];
+
+    $scope.shownRoute = "all";
 
     var routes = Routes.query();
     var routeResults = {};
     var results = RouteResults.query(function() {
 	// Divide results according to route
 	for (var i = 0; i < results.length; i++) {
-	    if (routeResults[results[i].routeID] == undefined) {
-		routeResults[results[i].routeID] = [results[i]];
+	    if (routeResults[results[i].name] == undefined) {
+		routeResults[results[i].name] = [results[i]];
 	    }
 	    else {
-		routeResults[results[i].routeID].push(results[i]);
+		routeResults[results[i].name].push(results[i]);
 	    }
 	}
-	console.log(routeResults);
+	//console.log(routeResults);
 
-	leafletData.getMap().then(function(map) {
-	    for (var i = 0; i < routeLines.length; i++) {
-		map.removeLayer(routeLines[i]);
-	    }
 
-	    var index = 0;
+	$.each(routeResults, function(key, routeResultArray) {
 
-	    $.each(routeResults, function(routeID, routeResultArray) {
-
-		$scope.routeResults.push({
-		    routeName: routeResultArray[0].name,
-		    finishedRoutes: routeResultArray
-		});
-
-		var routeColor = routeColors[index % routeColors.length];
-		
-		for (var i = 0; i < routeResultArray.length; i++) {
-		    var latLngs = [];
-		    for (var j = 0; j < routeResultArray[i].GPSTrace.length; j++) {
-			latLngs.push(L.latLng(routeResultArray[i].GPSTrace[j].lat, routeResultArray[i].GPSTrace[j].lng));
-		    }
-		    var name = routeResultArray[i].name;
-		    var routeLine = L.polyline(latLngs, {color: routeColor});
-		    routeLine.bindPopup('Route: ' + name + '', {
-			offset: new L.Point(0, 0)
-		    });
-		    routeLine.addTo(map);
-		    routeLines.push(routeLine);
-		}
-		
-		index++;
+	    $scope.routeResults.push({
+		routeName: routeResultArray[0].name,
+		finishedRoutes: routeResultArray
 	    });
+	    
 	});
+
+	console.log($scope.routeResults);
+
+	showRoutes($scope.shownRoute);
     });
     console.log(results);
 
@@ -93,4 +93,137 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 	}
     });
     
+    $scope.changedShownRoute = function(shownRoute) {
+	showRoutes(shownRoute);
+    }
+
+    function showRoutes(shownRoute) {
+	var index = 0;
+		
+	leafletData.getMap().then(function(map) {
+
+	    var goalIcon = L.icon({
+		iconUrl: '/images/fa/flag-checkered.png',
+		iconSize: [25, 32],
+		iconAnchor: [0, 31]
+	    });
+	    var startIcon = L.icon({
+                iconUrl: '/images/fa/location-arrow.png',
+                iconSize: [25, 32],
+                iconAnchor: [10, 21]
+            });
+	    var wordIcon = L.icon({
+                iconUrl: '/images/fa/pencil.png',
+                iconSize: [25, 32],
+                iconAnchor: [10, 21]
+            });
+	    var moveIcon = L.icon({
+                iconUrl: '/images/fa/hand-o-right.png',
+                iconSize: [25, 25],
+                iconAnchor: [10, 21]
+            });
+	    var photoIcon = L.icon({
+                iconUrl: '/images/fa/camera.png',
+                iconSize: [25, 25],
+                iconAnchor: [10, 21]
+            });
+	    var photoWordIcon = L.icon({
+                iconUrl: '/images/fa/camera-retro.png',
+                iconSize: [25, 25],
+                iconAnchor: [10, 21]
+            });
+
+	    for (var i = 0; i < routeLines.length; i++) {
+		map.removeLayer(routeLines[i]);
+	    }
+	    for (var i = 0; i < markers.length; i++) {
+                map.removeLayer(markers[i]);
+            }
+
+	    for (var k = 0; k < $scope.routeResults.length; k++) {
+		if (shownRoute == "all" || $scope.routeResults[k].routeName == shownRoute) {
+		    var routeResultArray = $scope.routeResults[k].finishedRoutes;
+
+		    for (var i = 0; i < routeResultArray.length; i++) {
+			var routeColor = routeColors[index % routeColors.length];
+
+			var latLngs = [];
+			for (var j = 0; j < routeResultArray[i].GPSTrace.length; j++) {
+			    latLngs.push(L.latLng(routeResultArray[i].GPSTrace[j].lat, routeResultArray[i].GPSTrace[j].lng));
+			}
+			//var name = routeResultArray[i].name;
+			var routeLine = L.polyline(latLngs, {color: routeColor});
+			//routeLine.bindPopup('Route: ' + name + '', {
+			//    offset: new L.Point(0, 0)
+			//});
+			routeLine.addTo(map);
+			routeLines.push(routeLine);
+			
+			var marker = L.marker(latLngs[0], {icon: startIcon}).addTo(map); // route start
+			markers.push(marker);
+			marker = L.marker(latLngs[latLngs.length-1], {icon: goalIcon}).addTo(map); // route end
+			markers.push(marker);
+			index++;
+
+			var tasks = routeResultArray[i].savedTasks;
+
+			for (var m = 0; m < tasks.length; m++) {
+			    var stepLatLngs = findRouteStepLatLngs(tasks[m].routeStep, routeResultArray[i]);
+			    if (stepLatLngs.length > 0) {
+				if (tasks[m].type == "move") {
+                                    var marker = L.marker(stepLatLngs[Math.floor((stepLatLngs.length - 1) / 2)], {icon: moveIcon}); // route step with word
+                                    marker.bindPopup("<p><b>Instructions</b>:<br>" + tasks[m].instructions + "</p>");
+                                    marker.addTo(map);
+                                    markers.push(marker);
+                                }
+				else if (tasks[m].type == "word") {
+				    var marker = L.marker(stepLatLngs[Math.floor((stepLatLngs.length - 1) / 2)], {icon: wordIcon}); // route step with word
+				    marker.bindPopup("<p><b>Instructions</b>:<br>" + tasks[m].instructions + "</p><p><b>Word</b>:<br>" + tasks[m].word + "</p>");
+				    marker.addTo(map);
+				    markers.push(marker);
+				}
+				else if (tasks[m].type == "photo") {
+				    var marker = L.marker(stepLatLngs[Math.floor((stepLatLngs.length - 1) / 2)], {icon: photoIcon}); // route step with word
+                                    var html = "<p><b>Instructions</b>:<br>" + tasks[m].instructions + "</p>";
+				    if (tasks[m].photoURL != "") {
+					html += '<p><a href="' + tasks[m].photoURL + '" target="_blank"><img alt="photo" width="100" src="' + tasks[m].photoURL + '"></a></p>';
+				    }
+				    else {
+					html += '<p>Photo missing</p>';
+				    }
+				    marker.bindPopup(html);
+                                    marker.addTo(map);
+                                    markers.push(marker);
+				}
+				else if (tasks[m].type == "photoword") {
+                                    var marker = L.marker(stepLatLngs[Math.floor((stepLatLngs.length - 1) / 2)], {icon: photoWordIcon}); // route step with word
+                                    html = "<p><b>Instructions</b>:<br>" + tasks[m].instructions + "</p><p><b>Word</b>:<br>" + tasks[m].word + "</p>";
+				    if (tasks[m].photoURL != "") {
+                                        html += '<p><a href="' + tasks[m].photoURL + '" target="_blank"><img alt="photo" width="100" src="' + tasks[m].photoURL + '"></a></p>';
+                                    }
+				    else {
+                                        html += '<p>Photo missing</p>';
+                                    }
+                                    marker.bindPopup(html);
+                                    marker.addTo(map);
+                                    markers.push(marker);
+                                }
+			    }
+			}
+		    }
+		}
+	    }
+	});
+    }
+
+    function findRouteStepLatLngs(routeStep, routeResult) {
+	var stepLatLngs = [];
+
+	for (var j = 0; j < routeResult.GPSTrace.length; j++) {
+	    if (routeResult.GPSTrace[j].routeStep == routeStep) {
+		stepLatLngs.push(L.latLng(routeResult.GPSTrace[j].lat, routeResult.GPSTrace[j].lng));
+	    }
+	}
+	return stepLatLngs;
+    }
 });

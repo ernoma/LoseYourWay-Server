@@ -7,11 +7,22 @@
     background-color: #78FA89;
   }
 </style>
-<div ng-controller="ExperiencesCtrl" class="container">
+<div class="container">
 
   <h1>Amsterdam Experiences</h1>
 
-  <h2>Routes on Map</h2>
+
+  <h2>Routes on the Map</h2>
+
+  <div class="row more_bottom_margin">
+    <div class="col-md-12">
+      <label for="routeSelect"> Routes to show: </label>
+      <select name="routeSelect" ng-model="shownRoute" class="form-control" ng-change="changedShownRoute(shownRoute)">
+	<option value="{{routeResult.routeName}}" ng-repeat="routeResult in routeResults">{{routeResult.routeName}}</option>
+	<option value="all">All routes</option>
+      </select>
+    </div>
+  </div>
 
   <leaflet lf-center="mediapolis" width="100%" height="480px"></leaflet>
 
@@ -19,12 +30,8 @@
 
   <div class="row" ng-repeat="routeResult in routeResults">
     <div class="col-md-12">
-      <h3>{{routeResult.routeName}}</h3>
+      <h3>Route {{routeResult.routeName}}</h3>
     </div>
   </div>
-
-  <h2>Route Words</h2>
-
-  
 
 </div>

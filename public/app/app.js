@@ -11,6 +11,7 @@ angular.module('myApp', [
   'myApp.version',
   'loseYourWayServer.services'
 ]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/app/view1'});
-}]);
+config(function($logProvider, $routeProvider) {
+    $logProvider.debugEnabled(false);
+    $routeProvider.otherwise({redirectTo: '/app/view1'});
+});

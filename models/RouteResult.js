@@ -3,7 +3,9 @@ var mongoose = require('mongoose');
 var TaskResultSchema = new mongoose.Schema({
     routeStep: Number,
     photoURL: String,
-    word: String
+    word: String,
+    instructions: String,
+    type: String
 });
 
 var RouteLocationSchema = new mongoose.Schema({
@@ -12,16 +14,24 @@ var RouteLocationSchema = new mongoose.Schema({
     routeStep: Number
 });
 
+var QuantitativeQuestion = new mongoose.Schema({
+    question: String,
+    value: Number
+});
+
+var QualitativeQuestion = new mongoose.Schema({
+    question: String,
+    answer: String
+});
+
 var RouteResultSchema = new mongoose.Schema({
     name: String,
     theme: String,
     routeID: String,
     GPSTrace: [RouteLocationSchema],
     savedTasks: [TaskResultSchema],
-    routeSatisfaction: Number,
-    appSatisfaction: Number,
-    uxSatisfaction: Number,
-    suggestions: String,
+    quantitativeQuestions: [QuantitativeQuestion],
+    qualitativeQuestions: [QualitativeQuestion],
     saved: { type: Date, default: Date.now }
 });
 

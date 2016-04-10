@@ -60,3 +60,8 @@
   content: "";
   padding: 0;
 }
+
+
+.more_bottom_margin {
+    margin-bottom: 20px;
+}
