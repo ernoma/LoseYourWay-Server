@@ -186,7 +186,7 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 				    var marker = L.marker(stepLatLngs[Math.floor((stepLatLngs.length - 1) / 2)], {icon: photoIcon}); // route step with word
                                     var html = "<p><b>Instructions</b>:<br>" + tasks[m].instructions + "</p>";
 				    if (tasks[m].photoURL != "") {
-					html += '<p><a href="' + tasks[m].photoURL + '" target="_blank"><img alt="photo" width="100" src="' + tasks[m].photoURL + '"></a></p>';
+					html += '<p><b>Photo</b>:<br><a href="' + tasks[m].photoURL + '" target="_blank"><img alt="photo" width="100" src="' + tasks[m].photoURL + '"></a></p>';
 				    }
 				    else {
 					html += '<p>Photo missing</p>';
@@ -199,7 +199,7 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
                                     var marker = L.marker(stepLatLngs[Math.floor((stepLatLngs.length - 1) / 2)], {icon: photoWordIcon}); // route step with word
                                     html = "<p><b>Instructions</b>:<br>" + tasks[m].instructions + "</p><p><b>Word</b>:<br>" + tasks[m].word + "</p>";
 				    if (tasks[m].photoURL != "") {
-                                        html += '<p><a href="' + tasks[m].photoURL + '" target="_blank"><img alt="photo" width="100" src="' + tasks[m].photoURL + '"></a></p>';
+                                        html += '<p><b>Photo</b>:<br><a href="' + tasks[m].photoURL + '" target="_blank"><img alt="photo" width="100" src="' + tasks[m].photoURL + '"></a></p>';
                                     }
 				    else {
                                         html += '<p>Photo missing</p>';
