@@ -1,5 +1,10 @@
 /* app css stylesheet */
 
+html, body {
+    margin: 0px;
+    padding: 0px;
+}
+
 #label_other_theme {
     padding-left: 10px;
     font-style: normal;
@@ -32,19 +37,46 @@
     cursor: move;
 }
 
+.menu_div {
+    background: #49bfa9;
+    background: linear-gradient(#49bf9f, #49bfa7);
+    text-align: right;
+    height: 74px;
+}
+
 .menu {
+  color: #fff;
   list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+  margin-bottom: 0;
+  padding: 0 0.5em 0 0;
+}
+
+.menu_link_title {
+    color: #0b8181;
+}
+
+.menu_title_our {
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.menu_title_way {
+    font-size: large;
+    font-weight: 200;
+}
+
+.menu_link {
+    color: #fff;
 }
 
 .menu:before {
   content: "[";
+  font-size: xx-large;
 }
 
 .menu:after {
   content: "]";
+  font-size: xx-large;
 }
 
 .menu > li {
@@ -62,6 +94,159 @@
 }
 
 
+/* Welcome page */
+
+.welcome_top_div {
+    height: 550px;
+    background: #48bea6;
+    background: linear-gradient(#49bf9f, #49bfa7);
+}
+
+.welcome_logo {
+    display: block;
+    padding-top: 86px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.welcome_left_div {
+    background: #d2fbf3;
+    height: 59px;
+    width: calc(50% - 1px);
+    border-right: 1px solid #62e0c8;
+    float:left;
+}
+
+.welcome_right_div {
+    background: #d2fbf3;
+    height: 59px;
+    width: 50%;
+    border: 0px;
+    overflow: hidden;
+}
+
+.welcome_mid_left_div {
+    height: 165px;
+    background: #d2fbf3;
+    width: 24%;
+    float: left;
+    border: 0px;
+}
+
+.welcome_mid_mid_div {
+    height: 165px;
+    background: #d2fbf3;
+    width: calc(52% - 2px);
+    float: left;
+    border: 1px solid #62e0c8;
+}
+
+.welcome_mid_right_div {
+    height: 165px;
+    background: #d2fbf3;
+    width: 24%;
+    border: 0px;
+    overflow: hidden;
+}
+
+.welcome_title_div {
+    width: 100%;
+    padding-top: 20px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    color: #49bea1;
+}
+
+.welcome_text_div {
+    width: 100%;
+    padding: 20px 30px 20px 30px;
+    text-align: justify;
+    text-justify: inter-word;
+    color: #49bea1;
+}
+
+.welcome_left_div_light {
+    background: #fff;
+    height: 59px;
+    width: calc(50% - 1px);
+    border-right: 1px solid #62e0c8;
+    float:left;
+}
+
+.welcome_right_div_light {
+    background: #fff;
+    height: 59px;
+    width: 50%;
+    border: 0px;
+    overflow: hidden;
+}
+
 .more_bottom_margin {
     margin-bottom: 20px;
+}
+
+.welcome_mid_left_div_light {
+    height: 80px;
+    background: #fff;
+    width: 24%;
+    float:left;
+    border: 0px;
+}
+
+.welcome_mid_mid_div_light {
+    height: 80px;
+    background: #fff;
+    width: calc(52% - 2px);
+    float:left;
+    border: 1px solid #62e0c8;
+}
+
+.welcome_mid_right_div_light {
+    height: 80px;
+    background: #fff;
+    width: 24%;
+    border: 0px;
+    overflow: hidden;
+}
+
+.welcome_buttons_div {
+    width: 100%;
+    text-align: center;
+}
+
+.welcome_page_create_button {
+    margin-top: 22px;
+    display: inline-block;
+    padding: 6px 12px;
+    touch-action manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    border: 1px solid transparent;
+    background: #01c8a1;
+    color: #fff;
+}
+
+.welcome_page_create_button:hover {
+    background: #11ffcf;
+}
+
+.welcome_page_create_button:active {
+    background: #00856a;
+}
+
+.create_route_button_icon {
+    padding: 0px 5px 3px 10px;
+    width: 30px;
+}
+
+.welcome_page_create_button:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.welcome_page_create_button:active {
+    color: #fff;
+    text-decoration: none;
 }

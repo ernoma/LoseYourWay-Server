@@ -4,8 +4,9 @@
 angular.module('myApp', [
   'ngRoute',
   'ng-sortable',
-  'myApp.view1',
-  'myApp.view2',
+  'myApp.welcome',
+  'myApp.create',
+  'myApp.search',
   'myApp.experiences',
   'myApp.privacy',
   'myApp.version',
@@ -13,5 +14,5 @@ angular.module('myApp', [
 ]).
 config(function($logProvider, $routeProvider) {
     $logProvider.debugEnabled(false);
-    $routeProvider.otherwise({redirectTo: '/app/view1'});
+    $routeProvider.otherwise({redirectTo: '/app/welcome'});
 });
