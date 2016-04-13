@@ -244,6 +244,94 @@ html, body {
     text-decoration: none;
 }
 
+/* Experiences page */
+
+.experiences_left_div_light {
+    background: #fff;
+    height: 59px;
+    width: calc(50% - 1px);
+    border-right: 1px solid #62e0c8;
+    float:left;
+}
+
+.experiences_right_div_light {
+    background: #fff;
+    height: 59px;
+    width: 50%;
+    border: 0px;
+    overflow: hidden;
+}
+
+.experiences_task_icons_div {
+    min-height: 200px;
+    border: 1px solid #62e0c8;
+}
+
+.experiences_task_icons_div > h1 {
+    color: #62e0c8;
+    font-size: xx-large;
+    padding-left: 20px;
+    font-weight: normal;
+}
+
+.experiences_task_icons_container_div {
+    width: 100%;
+    margin-left: auto; 
+    margin-right: auto;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    padding: 0 40px 0 40px;
+    clear: both;
+    margin-top: 20px;
+}
+
+.experiences_task_icons_container_div > div {
+    width: 16%;
+    height: 200px;
+    vertical-align: top;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    text-align: center;
+    padding-bottom:
+}
+
+.experiences_task_icons_text_div {
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 0 9px 0 9px;
+}
+
+.experiences_task_icons_container_div > img {
+    width: 80px;
+
+}
+
+.experiences_task_icons_container_div > span {
+    width: 100%;
+    display: inline-block;
+    font-size: 0;
+    line-height: 0;
+}
+
+.pink_text {
+    color: #ff86a9;
+}
+
+.green_text {
+    color: #6adf52;
+}
+
+.light_blue_text {
+    color: #7ad1ed;
+}
+
+.aquamarine_text {
+    color: #57ecc2;
+}
+
+
 /* Privacy policy page */
 
 .privacy_white_space_div {

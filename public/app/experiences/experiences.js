@@ -103,34 +103,34 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 	leafletData.getMap().then(function(map) {
 
 	    var goalIcon = L.icon({
-		iconUrl: '/images/fa/flag-checkered.png',
-		iconSize: [25, 32],
-		iconAnchor: [0, 31]
+		iconUrl: '/images/map/goal.png',
+		iconSize: [25, 25],
+		iconAnchor: [12, 12]
 	    });
 	    var startIcon = L.icon({
-                iconUrl: '/images/fa/location-arrow.png',
-                iconSize: [25, 32],
-                iconAnchor: [10, 21]
+                iconUrl: '/images/map/start.png',
+                iconSize: [20, 20],
+                iconAnchor: [10, 10]
             });
 	    var wordIcon = L.icon({
-                iconUrl: '/images/fa/pencil.png',
-                iconSize: [25, 32],
-                iconAnchor: [10, 21]
+                iconUrl: '/images/map/write_icon_selected_small.png',
+                iconSize: [25, 25],
+                iconAnchor: [12, 12]
             });
 	    var moveIcon = L.icon({
-                iconUrl: '/images/fa/hand-o-right.png',
+                iconUrl: '/images/map/move_icon_selected_small.png',
                 iconSize: [25, 25],
-                iconAnchor: [10, 21]
+                iconAnchor: [12, 12]
             });
 	    var photoIcon = L.icon({
-                iconUrl: '/images/fa/camera.png',
+                iconUrl: '/images/map/take_photo_icon_selected_small.png',
                 iconSize: [25, 25],
-                iconAnchor: [10, 21]
+                iconAnchor: [12, 12]
             });
 	    var photoWordIcon = L.icon({
-                iconUrl: '/images/fa/camera-retro.png',
+                iconUrl: '/images/map/write_and_take_photo_icon_selected_small.png',
                 iconSize: [25, 25],
-                iconAnchor: [10, 21]
+                iconAnchor: [12, 12]
             });
 
 	    for (var i = 0; i < routeLines.length; i++) {
