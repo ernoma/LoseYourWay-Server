@@ -151,18 +151,20 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 			for (var j = 0; j < routeResultArray[i].GPSTrace.length; j++) {
 			    latLngs.push(L.latLng(routeResultArray[i].GPSTrace[j].lat, routeResultArray[i].GPSTrace[j].lng));
 			}
-			//var name = routeResultArray[i].name;
-			var routeLine = L.polyline(latLngs, {color: routeColor});
-			//routeLine.bindPopup('Route: ' + name + '', {
-			//    offset: new L.Point(0, 0)
-			//});
-			routeLine.addTo(map);
-			routeLines.push(routeLine);
+			if (latLngs.length > 0) {
+			    //var name = routeResultArray[i].name;
+			    var routeLine = L.polyline(latLngs, {color: routeColor});
+			    //routeLine.bindPopup('Route: ' + name + '', {
+			    //    offset: new L.Point(0, 0)
+			    //});
+			    routeLine.addTo(map);
+			    routeLines.push(routeLine);
 			
-			var marker = L.marker(latLngs[0], {icon: startIcon}).addTo(map); // route start
-			markers.push(marker);
-			marker = L.marker(latLngs[latLngs.length-1], {icon: goalIcon}).addTo(map); // route end
-			markers.push(marker);
+			    var marker = L.marker(latLngs[0], {icon: startIcon}).addTo(map); // route start
+			    markers.push(marker);
+			    marker = L.marker(latLngs[latLngs.length-1], {icon: goalIcon}).addTo(map); // route end
+			    markers.push(marker);
+			}
 			index++;
 
 			var tasks = routeResultArray[i].savedTasks;
