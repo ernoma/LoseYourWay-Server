@@ -5,6 +5,7 @@ angular.module('myApp', [
   'ngRoute',
   'ng-sortable',
   'myApp.welcome',
+  'myApp.getapp',
   'myApp.create',
   'myApp.search',
   'myApp.experiences',

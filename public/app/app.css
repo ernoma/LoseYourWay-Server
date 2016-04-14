@@ -223,10 +223,14 @@ html, body {
 
 .welcome_page_create_button:hover {
     background: #11ffcf;
+    color: #fff;
+    text-decoration: none;
 }
 
 .welcome_page_create_button:active {
-    background: #00856a;
+    background: #00856a
+    color: #fff;
+    text-decoration: none;
 }
 
 .create_route_button_icon {
@@ -234,12 +238,52 @@ html, body {
     width: 30px;
 }
 
-.welcome_page_create_button:hover {
+.welcome_page_getapp_button {
+    margin-top: 22px;
+    display: inline-block;
+    padding: 6px 12px;
+    touch-action manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    border: 1px solid transparent;
+    background: #0f93d1;
+    color: #fff;
+    width: 150px;
+}
+
+.welcome_page_getapp_button:hover {
+    background: #17b5ff;
     color: #fff;
     text-decoration: none;
 }
 
-.welcome_page_create_button:active {
+.welcome_page_getapp_button:active {
+    background: #13648a;
+    color: #fff;
+    text-decoration: none;
+}
+
+.welcome_page_experiences_button {
+    margin-top: 22px;
+    display: inline-block;
+    padding: 6px 12px;
+    touch-action manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    border: 1px solid transparent;
+    background: #01c8a1;
+    color: #fff;
+    width: 150px;
+}
+
+.welcome_page_experiences_button:hover {
+    background: #11ffcf;
+    color: #fff;
+    text-decoration: none;
+}
+
+.welcome_page_experiences_button:active {
+    background: #00856a;
     color: #fff;
     text-decoration: none;
 }
@@ -360,6 +404,16 @@ html, body {
     margin-bottom: 10px;
     padding-left: 20px;
     padding-bottom: 15px;
+}
+
+/* Get app page */
+
+.getapp_mid_mid_div {
+    min-height: 170px;
+    background: #d2fbf3;
+    width: calc(52% - 2px);
+    float: left;
+    border: 1px solid #62e0c8;
 }
 
 /* Privacy policy page */
