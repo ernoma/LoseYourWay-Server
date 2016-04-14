@@ -9,28 +9,28 @@
 </style>
 <div class="container">
 
-  <h1>Amsterdam Experiences</h1>
+  <h1 class="cyan_text">Amsterdam Experiences</h1>
 
-
-  <h2>Routes on the Map</h2>
+  <h2 class="cyan_text">Routes on the Map</h2>
 
   <div class="row more_bottom_margin">
     <div class="col-md-12">
-      <label for="routeSelect"> Routes to show: </label>
-      <select name="routeSelect" ng-model="shownRoute" class="form-control" ng-change="changedShownRoute(shownRoute)">
+      <label class="cyan_text" for="routeSelect"> Routes to show: </label>
+      <select name="routeSelect" ng-model="shownRoute" class="form-control experiences_map_route_select" ng-change="changedShownRoute(shownRoute)">
 	<option value="{{routeResult.routeName}}" ng-repeat="routeResult in routeResults">{{routeResult.routeName}}</option>
-	<option value="all">All routes</option>
+	<option value="all">All</option>
       </select>
     </div>
   </div>
 
   <leaflet lf-center="mediapolis" width="100%" height="480px"></leaflet>
+
   <div class="experiences_left_div_light">
   </div>
   <div class="experiences_right_div_light">
   </div>
   <div class="experiences_task_icons_div">
-    <h1>Task Icons</h1>
+    <h3>Task Icons</h3>
     <div class="experiences_task_icons_container_div">
       <div><div class="experiences_task_icons_text_div">Start</div>
       	<img src="../images/start_medium.png" alt=""/>
@@ -54,12 +54,18 @@
     </div>
   </div>
 
-  <h2>User Feedbacks</h2>
+  <h2 class="cyan_text experiences_user_feedback_title">User Feedbacks</h2>
 
-  <div class="row" ng-repeat="routeResult in routeResults">
-    <div class="col-md-12">
-      <h3>Route {{routeResult.routeName}}</h3>
-    </div>
+  <div class="experiences_task_user_feedback_div" ng-repeat="routeResult in routeResults">
+    <h3 class="dark_cyan_text">{{routeResult.routeName}}</h3>
+    <p class="cyan_text">Theme: <span class="black_text">{{routeResult.finishedRoutes[0].theme}}</span></p>
+    <p class="cyan_text">Reviews: <span class="black_text">{{routeResult.avgPoints}}</span> points avg.</p>
+    <p class="cyan_text">Thoughts & suggestions:
+      <ul>
+	<li ng-if="routeResult.qualitativeQuestionAnswers.length == 0">-
+	<li ng-repeat="qualitativeQuestionAnswer in routeResult.qualitativeQuestionAnswers">{{qualitativeQuestionAnswer}}
+      </ul>
+    </p>
   </div>
 
 </div>

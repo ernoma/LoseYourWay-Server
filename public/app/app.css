@@ -246,6 +246,14 @@ html, body {
 
 /* Experiences page */
 
+.experiences_map_route_select {
+    background: #d2fbf3 !important;
+    color: #32826e;
+    border-radius: 0px;
+    width:auto;
+    display:inline-block;
+}
+
 .experiences_left_div_light {
     background: #fff;
     height: 59px;
@@ -264,12 +272,12 @@ html, body {
 
 .experiences_task_icons_div {
     min-height: 200px;
-    border: 1px solid #62e0c8;
+    border: 1px solid #48bda0;
 }
 
-.experiences_task_icons_div > h1 {
-    color: #62e0c8;
-    font-size: xx-large;
+.experiences_task_icons_div > h3 {
+    color: #48bda0;
+    font-size: large;
     padding-left: 20px;
     font-weight: normal;
 }
@@ -315,6 +323,10 @@ html, body {
     line-height: 0;
 }
 
+.cyan_text {
+    color: #4bbea1;
+}
+
 .pink_text {
     color: #ff86a9;
 }
@@ -331,6 +343,24 @@ html, body {
     color: #57ecc2;
 }
 
+.black_text {
+    color: #000;
+}
+
+.dark_cyan_text {
+    color: #32826e;
+}
+
+.experiences_user_feedback_title {
+    margin-top: 40px;
+}
+
+.experiences_task_user_feedback_div {
+    border: 1px solid #4bbea1;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+}
 
 /* Privacy policy page */
 

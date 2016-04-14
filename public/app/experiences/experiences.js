@@ -33,8 +33,6 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 			"#0000FF",
 			"#FF00FF",
 			"#00FFFF",
-			"#F0F0F0",
-			"#0F0F0F",
 			"#F0F000",
 			"#F000F0",
 			"#FFF0F0",
@@ -64,21 +62,31 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 	}
 	//console.log(routeResults);
 
-
 	$.each(routeResults, function(key, routeResultArray) {
+	    
+	    var avgPoints = 0;
+	    var qualitativeQuestionAnswers = [];
+	    for (var j = 0; j < routeResultArray.length; j++) {
+		avgPoints += routeResultArray[j].quantitativeQuestions[0].value;
+		if (routeResultArray[j].qualitativeQuestions[0].answer != "") {
+		    qualitativeQuestionAnswers.push(routeResultArray[j].qualitativeQuestions[0].answer);
+		}
+	    }
+	    avgPoints = avgPoints / routeResultArray.length;
 
 	    $scope.routeResults.push({
 		routeName: routeResultArray[0].name,
-		finishedRoutes: routeResultArray
+		finishedRoutes: routeResultArray,
+		avgPoints: avgPoints,
+		qualitativeQuestionAnswers: qualitativeQuestionAnswers
 	    });
-	    
 	});
 
 	console.log($scope.routeResults);
 
 	showRoutes($scope.shownRoute);
     });
-    console.log(results);
+    //console.log(results);
 
     angular.extend($scope, {
         amsterdam: {
