@@ -22,7 +22,7 @@
 <body>
   <div class="menu_div">
   <ul class="menu">
-    <li><a class="menu_link_title" href="#/app/welcome"><span class="menu_title_our">Our</span> <span class="menu_title_way">way</span></a></li>
+    <li><a class="active_menu_link" href="#/app/welcome"><span class="menu_title_our">Our</span> <span class="menu_title_way">way</span></a></li>
     <li><a class="menu_link" href="#/app/getapp">Get app</a></li>
     <li><a class="menu_link" href="#/app/experiences">Experiences</a></li>
     <li><a class="menu_link" href="#/app/create">Create route</a></li>
@@ -62,6 +62,13 @@
   <script src="/app/components/version/version.js"></script>
   <script src="/app/components/version/version-directive.js"></script>
   <script src="/app/components/version/interpolate-filter.js"></script>
+  <script type="text/javascript">
+    $(".menu a").on("click", function(){
+    var item = $(".menu").find(".active_menu_link");
+    item.removeClass("active_menu_link").addClass("menu_link");
+    $(this).removeClass("menu_link").addClass("active_menu_link");
+    });
+  </script>
 </body>
 </html>
 

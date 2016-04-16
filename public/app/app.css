@@ -15,7 +15,7 @@ html, body {
     background: #49bfa9;
     background: linear-gradient(#49bf9f, #49bfa7);
     text-align: right;
-    height: 74px;
+    height: 54px;
     padding: 0 1em 0 0;
 }
 
@@ -23,7 +23,7 @@ html, body {
   color: #fff;
   list-style: none;
   margin-bottom: 0;
-  padding: 0 0 0 0;
+  padding: 2px 0 0 0;
 }
 
 .menu_link_title {
@@ -42,6 +42,14 @@ html, body {
 
 .menu_link {
     color: #fff;
+}
+
+.active_menu_link {
+    color: #027a79;
+}
+
+.menu > li > a:link {
+    text-decoration: none;
 }
 
 .menu:before {
