@@ -10,32 +10,6 @@ html, body {
     font-style: normal;
 }
 
-.route_tasks {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #CCC;
-    margin: 20px;
-    padding: 20px;
-}
-
-.task_list {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-.task_list_item {
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px;
-    cursor: move;
-}
-
-.task_list_item_place {
-    cursor: move;
-}
 
 .menu_div {
     background: #49bfa9;
@@ -367,34 +341,6 @@ html, body {
     line-height: 0;
 }
 
-.cyan_text {
-    color: #4bbea1;
-}
-
-.pink_text {
-    color: #ff86a9;
-}
-
-.green_text {
-    color: #6adf52;
-}
-
-.light_blue_text {
-    color: #7ad1ed;
-}
-
-.aquamarine_text {
-    color: #57ecc2;
-}
-
-.black_text {
-    color: #000;
-}
-
-.dark_cyan_text {
-    color: #32826e;
-}
-
 .experiences_user_feedback_title {
     margin-top: 40px;
 }
@@ -404,6 +350,167 @@ html, body {
     margin-bottom: 10px;
     padding-left: 20px;
     padding-bottom: 15px;
+}
+
+/* Create routes page */
+
+.create_route_top_div {
+    border: 1px solid #48bda0;
+    padding: 20px;
+}
+
+.create_route_route_name_input {
+    border-radius: 0px;
+    padding: 7px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    width: 267px !important;
+}
+
+.form-control::-webkit-input-placeholder { color: #86ccba; }
+.form-control:-moz-placeholder { color: #86ccba; }
+.form-control::-moz-placeholder { color: #86ccba; }
+.form-control:-ms-input-placeholder { color: #86ccba; }
+
+.create_route_theme_select {
+    color: #469381;
+    border-radius: 0px;
+}
+
+.create_route_other_theme_span {
+    font-weight: bold;
+}
+
+.create_route_other_theme_name_input {
+    border-radius: 0px;
+}
+
+.create_route_task_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.create_route_task_list_item {
+}
+
+.create_route_task_div {
+    background: #d2fbf3;
+    border: 1px solid #49bfa9;
+    padding: 20px 40px 20px 40px;
+    cursor: move;
+}
+
+.create_route_task_title {
+    font-size: x-large;
+    margin-top: 0px;
+}
+
+.create_route_task_type_text {
+    font-size: large;
+}
+
+.create_route_task_type_label > input {
+    visibility: hidden; /* Makes input not-clickable */
+    position: absolute;
+}
+
+.create_route_task_type_label > input + img {
+    cursor: pointer;
+}
+
+.task_list_item_place {
+    cursor: move;
+}
+
+.create_route_task_type_icon {
+    width: 54px;
+}
+
+.create_route_task_instructions_div {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.create_route_task_instructions_textarea {
+    width: 100% !important;
+    padding: 7px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    border-radius: 0px;
+}
+
+.create_route_task_delete_button_div {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.create_task_delete_button {
+    background: #fc7272;
+    border: none;
+    color: #fff;
+    padding: 5px 40px 5px 40px;
+    float: right;
+}
+
+.create_task_delete_button:hover {
+    background: #fc2a2a;
+}
+
+.create_task_delete_button:active {
+    background: #662e2e;
+}
+
+.create_route_task_route_buttons_div {
+    overflow: hidden;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.create_route_task_add_button {
+    background: #01c8a1;
+    border: none;
+    color: #fff;
+    padding: 5px 40px 5px 40px;
+    float: left;
+    font-size: large;
+}
+
+.create_route_task_add_button:hover {
+    background: #11ffcf;
+}
+
+.create_route_task_add_button:active {
+    background: #00856a;
+}
+
+.create_route_task_add_button_plus_sign_span {
+    font-weight: normal;
+    font-size: x-large;
+    border: 1px solid;
+    padding: 0px 6px 0px 6px;
+    border-radius: 15px;
+}
+
+.create_route_save_button {
+    background: #0f93d1;
+    border: none;
+    color: #fff;
+    padding: 5px 40px 5px 40px;
+    float: right;
+    font-size: large;
+    height: 44px;
+}
+
+.create_route_save_button:hover {
+    background: #17b5ff;
+}
+
+.create_route_save_button:active {
+    background: #007096;
 }
 
 /* Get app page */
@@ -469,3 +576,35 @@ html, body {
 .privacy_text_div > p {
     padding-bottom: 15px;
 }
+
+
+/* Colored texts */
+
+.cyan_text {
+    color: #4bbea1;
+}
+
+.pink_text {
+    color: #ff86a9;
+}
+
+.green_text {
+    color: #6adf52;
+}
+
+.light_blue_text {
+    color: #7ad1ed;
+}
+
+.aquamarine_text {
+    color: #57ecc2;
+}
+
+.black_text {
+    color: #000;
+}
+
+.dark_cyan_text {
+    color: #32826e;
+}
+

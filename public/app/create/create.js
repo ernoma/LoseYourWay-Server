@@ -9,13 +9,19 @@ angular.module('myApp.create', ['ngRoute'])
   });
 }])
 
-.controller('RouteAddCtrl', function($scope, Routes) {
+.controller('RouteAddCtrl', function($scope, $location, Routes) {
 
     $scope.routes = Routes.query();
 
     $scope.otherThemeName = "";
 
+    //$scope.routeAddForm = {};
+
     var resetRoute = function() {
+	//console.log($scope);
+	if ($scope.routeAddForm != undefined) {
+	    $scope.routeAddForm.$setUntouched();
+	}
 	$scope.route = {
             name: "",
             theme: "Architecture and urban design",
@@ -26,18 +32,19 @@ angular.module('myApp.create', ['ngRoute'])
 		}
             ]
 	}
+	$scope.otherThemeName = "";
     };
 
     resetRoute();
 
-    $scope.myColor = "#aaa";
+    $scope.myColor = "#a0beb7";
 
     $scope.changedTheme = function(theme) {
 	if (theme == "Other") {
-	    $scope.myColor = "#000";
+	    $scope.myColor = "#4bbea1";
 	}
 	else {
-	    $scope.myColor = "#aaa";
+	    $scope.myColor = "#a0beb7";
 	}
     }	    
 
@@ -51,6 +58,15 @@ angular.module('myApp.create', ['ngRoute'])
 	    instructions: "",
 	    routeStep: $scope.route.tasks.length + 1
         });
+    }
+
+    $scope.deleteTask = function(task) {
+	for (var i = 0; i < $scope.route.tasks.length; i++) {
+	    if ($scope.route.tasks[i].routeStep == task.routeStep) {
+		$scope.route.tasks.splice(i, 1);
+		break;
+	    }
+	}
     }
 
     $scope.createRoute = function() {
@@ -70,6 +86,7 @@ angular.module('myApp.create', ['ngRoute'])
 	    route.$save(function(){
 		$scope.routes.push(route);
 		resetRoute();
+		$location.url('/app/search');
 	    });
 	}
     }
