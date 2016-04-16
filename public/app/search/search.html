@@ -1,31 +1,61 @@
 <div class="container" ng-controller="RouteListCtrl">
-  <div class="row">
-    <div class="col-md-4">
-      <!--Sidebar content-->
-      <div class="jumbotron">
-	<form>
-	    <div class="form-group">
-	          Search: <input type="text" ng-model="query">
-		    </div>
-	      <div class="form-group">
-		    Sort by:
-		        <select ng-model="orderProp">
-              <option value="name">Name</option>
-              <option value="theme">Theme</option>
-	            <option value="-created">Newest</option>
-		        </select>
-			  </div>
-	      </form>
+  
+  <h1 class="cyan_text">Search Routes</h1>
+
+  <div class="search_routes_top_div">
+    <form>
+      <div class="form-group has-feedback has-feedback-left search_routes_route_name_div">
+	 <label class="control-label cyan_text">Search</label>
+	 <input class="form-control search_routes_route_name_input" type="text" ng-model="query" placeholder="Search by name">
+	 <i class="form-control-feedback glyphicon glyphicon-search search_routes_search_icon"></i>
       </div>
-    </div>
-    <div class="col-md-8">
-      <ul class="list-group">
-	<li class="list-group-item" ng-repeat="route in routes  | filter:query | orderBy:orderProp">
-	    <h2><a href="#/app/routes/{{route._id}}">{{route.name}}</a></h2>
-	      <p>Theme: {{route.theme}}</p>
-	        <p>Created at: {{route.created | date : 'medium'}}</p>
-		</li>
-      </ul>
-    </div>
+      <div class="form-group search_routes_route_sort_div">
+	<label class="control-label cyan_text">Sort by</label>
+	<select class="form-control search_routes_sort_by_select" ng-model="orderProp">
+          <option value="name">Name</option>
+          <option value="theme">Theme</option>
+	  <option value="-created">Newest</option>
+	</select>
+      </div>
+    </form>
   </div>
+  <ul class="search_routes_task_list">
+    <li class="search_routes_task_list_item" ng-repeat="route in routes  | filter:query | orderBy:orderProp">
+      <div class="search_routes_left_div_light_long" ng-if="$index == 0">
+      </div>
+      <div class="search_routes_right_div_light_long" ng-if="$index == 0">
+      </div>
+      <div class="search_routes_left_div_light" ng-if="$index > 0">
+      </div>
+      <div class="search_routes_right_div_light" ng-if="$index > 0">
+      </div>
+      <div class="search_routes_task_div">
+	<div class="search_routes_task_overview_div">
+	  <div class="search_routes_task_name_div">{{route.name}}</div>
+	  <div class="search_routes_task_info_div">
+	    <p><span class="cyan_text">Theme:</span> {{route.theme}}</p>
+	    <p><span class="cyan_text">Created at:</span> {{route.created | date : 'medium'}}</p>
+	  </div>
+	</div>
+	<div class="search_routes_task_details">
+	  <div ng-repeat="task in route.tasks" class="">
+	    <div class="search_routes_task_detail_left_div" ng-if="$index > 0">
+	    </div>
+	    <div class="search_routes_task_detail_right_div" ng-if="$index > 0">
+	    </div>
+	    <div class="search_routes_task_detail">
+	      <div class="search_routes_task_detail_title_div">Task {{$index+1}}</div>
+	      <img class="search_routes_task_details_icon" src="/images/move_icon_selected_medium.png" ng-if="task.type == 'move'">
+	      <img class="search_routes_task_details_icon" src="/images/write_icon_selected_medium.png" ng-if="task.type == 'word'">
+	      <img class="search_routes_task_details_icon" src="/images/take_photo_icon_selected_medium.png" ng-if="task.type == 'photo'">
+	      <img class="search_routes_task_details_icon" src="/images/write_and_take_photo_icon_selected_medium.png" ng-if="task.type == 'photoword'">
+	      <span class="search_routes_task_details_span">{{task.instructions}}</span>
+	    </div>
+	  </div>
+	</div>
+      </div>
+    </li>
+  </ul>
+  
 </div>
+<div class="page_end"></div>

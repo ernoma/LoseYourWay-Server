@@ -352,7 +352,7 @@ html, body {
     padding-bottom: 15px;
 }
 
-/* Create routes page */
+/* Create route page */
 
 .create_route_top_div {
     border: 1px solid #48bda0;
@@ -511,6 +511,156 @@ html, body {
 
 .create_route_save_button:active {
     background: #007096;
+}
+
+/* Search routes page */
+
+.search_routes_top_div {
+    border: 1px solid #48bda0;
+    padding: 20px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.search_routes_route_name_div {
+    float: left;
+}
+
+.search_routes_route_sort_div {
+    float: right;
+}
+
+.search_routes_route_name_input {
+    border-radius: 0px;
+    padding: 7px;
+    -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+    box-shadow: inset 2px 2px 2px 0px #dddddd;
+    width: 267px !important;
+}
+
+.search_routes_search_icon {
+    color: #75dcc9;
+}
+
+.has-feedback-left input.form-control {
+  padding-left: 34px; 
+  padding-right: 12px; 
+}
+.has-feedback-left .form-control-feedback {
+  left: 0;
+}
+
+.form-horizontal .has-feedback-left .form-control-feedback {
+  left: 12px;
+}
+
+.search_routes_sort_by_select {
+    color: #469381;
+    border-radius: 0px;
+}
+
+.search_routes_left_div_light {
+    background: #fff;
+    height: 10px;
+    width: calc(50% - 1px);
+    border-right: 1px solid #62e0c8;
+    float:left;
+}
+
+.search_routes_right_div_light {
+    background: #fff;
+    height: 10px;
+    width: 50%;
+    border: 0px;
+    overflow: hidden;
+}
+
+.search_routes_left_div_light_long {
+    background: #fff;
+    height: 50px;
+    width: calc(50% - 1px);
+    border-right: 1px solid #62e0c8;
+    float:left;
+}
+
+.search_routes_right_div_light_long {
+    background: #fff;
+    height: 50px;
+    width: 50%;
+    border: 0px;
+    overflow: hidden;
+}
+
+.search_routes_task_list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.search_routes_task_list_item {
+}
+
+.search_routes_task_div {
+    background: #d2fbf3;
+    border: 1px solid #49bfa9;
+    padding: 20px 40px 20px 40px;
+}
+
+.search_routes_task_overview_div {
+    overflow: hidden;
+    width: 100%;
+}
+
+.search_routes_task_name_div {
+    float: left;
+    font-size: x-large;
+    font-weight: bold;
+    color: #388571;
+}
+
+.search_routes_task_info_div {
+    float: right;
+    font-size: large;
+    color: #388571;
+}
+
+.search_routes_task_details {
+    margin-top: 10px;
+}
+
+.search_routes_task_detail_left_div {
+    height: 10px;
+    width: calc(50% - 1px);
+    border-right: 1px solid #62e0c8;
+    float:left;
+}
+
+.search_routes_task_detail_right_div {
+    height: 10px;
+    width: 50%;
+    border: 0px;
+    overflow: hidden;
+}
+
+.search_routes_task_detail {
+    border: 1px solid #57cfb0;
+    background: #fff;
+    color: #388571;
+    padding: 10px;
+}
+
+.search_routes_task_detail_title_div {
+    font-size: large;
+    padding-bottom: 10px;
+}
+
+.search_routes_task_details_icon {
+    width: 50px;
+}
+
+.search_routes_task_details_span {
+    padding-left: 10px;
 }
 
 /* Get app page */
