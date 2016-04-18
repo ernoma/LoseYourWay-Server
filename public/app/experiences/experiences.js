@@ -7,7 +7,7 @@
 // TODO: Photo storing and showing
 //
 
-angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
+angular.module('myApp.experiences', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/app/experiences', {
@@ -16,18 +16,56 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
   });
 }])
 
-.controller('ExperiencesCtrl', function($scope, Routes, RouteResults, leafletData) {
+.controller('ExperiencesCtrl', function($scope, Routes, RouteResults) {
 
-    leafletData.getMap().then(function(map) {
-	map.openPopup = function(popup) {
-            //        this.closePopup();  // just comment this
-            map._popup = popup;
-
-            return map.addLayer(popup).fire('popupopen', {
-                popup: map._popup
-            });
-        }
+    var offlineLayer = L.tileLayer('/images/amsterdam/EPSG_900913_{z}/{x}_{y}.jpeg', {
+	tms: true,
+	minZoom: 10,
+        maxNativeZoom: 16,
+	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     });
+    var osmLayer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+    });
+    var tonerLayer = L.tileLayer('http://tile.stamen.com/toner/{z}/{x}/{y}.png', {
+	attribution: '<a href="http://maps.stamen.com/">Map tiles</a> by <a href="http://stamen.com/">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, Data &copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+    });
+    var watercolorLayer = L.tileLayer('http://tile.stamen.com/watercolor/{z}/{x}/{y}.jpg', {
+	attribution: '<a href="http://maps.stamen.com/">Map tiles</a> by <a href="http://stamen.com/">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>, Data &copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+    });
+    var cycleLayer = L.tileLayer('https://{s}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
+	attribution: 'Maps &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, Data &copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+    });
+    var transportLayer = L.tileLayer('https://{s}.tile.thunderforest.com/transport/{z}/{x}/{y}.png', {
+	attribution: 'Maps &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, Data &copy; <a href="http://osm.org/copyright">OpenStreetMap contributors</a>'
+    });
+
+    var map = L.map('map', {
+	center: [52.3707, 4.9004],
+	zoom: 13,
+	layers: [osmLayer]
+    });
+
+    map.openPopup = function(popup) {
+	//        this.closePopup();  // just comment this
+	map._popup = popup;
+	
+	return map.addLayer(popup).fire('popupopen', {
+            popup: map._popup
+	});
+    }
+
+    var baseMaps = {
+	"OSM default": osmLayer,
+	"Offline": offlineLayer,
+	"Black & white": tonerLayer,
+	"Watercolor": watercolorLayer,
+	"Cycling": cycleLayer,
+	"Transport": transportLayer
+    };
+
+    L.control.layers(baseMaps).addTo(map);
+    //});
 
     var routeColors = [ "#FF0000",
 			"#0000FF",
@@ -87,19 +125,6 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 	showRoutes($scope.shownRoute);
     });
     //console.log(results);
-
-    angular.extend($scope, {
-        amsterdam: {
-            lat: 52.3707,
-            lng: 4.9004,
-            zoom: 13
-        },
-	mediapolis: {
-	    lat: 61.50666,
-	    lng: 23.64866,
-	    zoom: 12
-	}
-    });
     
     $scope.changedShownRoute = function(shownRoute) {
 	showRoutes(shownRoute);
@@ -108,7 +133,7 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
     function showRoutes(shownRoute) {
 	var index = 0;
 		
-	leafletData.getMap().then(function(map) {
+	//leafletData.getMap().then(function(map) {
 
 	    var goalIcon = L.icon({
 		iconUrl: '/images/map/goal.png',
@@ -223,7 +248,7 @@ angular.module('myApp.experiences', ['ngRoute', 'leaflet-directive'])
 		    }
 		}
 	    }
-	});
+	//});
     }
 
     function findRouteStepLatLngs(routeStep, routeResult) {

@@ -280,6 +280,11 @@ html, body {
     display:inline-block;
 }
 
+#map {
+    width: 100%;
+    height: 480px;
+}
+
 .experiences_left_div_light {
     background: #fff;
     height: 59px;
