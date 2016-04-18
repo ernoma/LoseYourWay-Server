@@ -661,6 +661,7 @@ html, body {
     background: #fff;
     color: #388571;
     padding: 10px;
+    overflow: hidden;
 }
 
 .search_routes_task_detail_title_div {
@@ -670,10 +671,12 @@ html, body {
 
 .search_routes_task_details_icon {
     width: 50px;
+    float: left;
+    margin-right: 10px;
 }
 
-.search_routes_task_details_span {
-    padding-left: 10px;
+.search_routes_task_details_div {
+    overflow: hidden;
 }
 
 /* Get app page */
