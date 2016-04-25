@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var hotosm = require('./hotosm.js');
+var hotosm = require('../hotosm/hotosm.js');
 
 
 /* GET home page. */
